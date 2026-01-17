@@ -1,0 +1,7 @@
+D:\06_DndVaMiDinero\publish\DndVaMiDinero.exe
+D:\06_DndVaMiDinero\publish\web.config
+D:\06_DndVaMiDinero\publish\appsettings.json
+D:\06_DndVaMiDinero\publish\DndVaMiDinero.dll
+D:\06_DndVaMiDinero\publish\DndVaMiDinero.deps.json
+D:\06_DndVaMiDinero\publish\DndVaMiDinero.runtimeconfig.json
+D:\06_DndVaMiDinero\publish\DndVaMiDinero.pdb

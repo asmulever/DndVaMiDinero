@@ -1,0 +1,47 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = DndVaMiDinero
+build_property.RootNamespace = DndVaMiDinero
+build_property.ProjectDir = D:\06_DndVaMiDinero\src\htdocs\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = D:\06_DndVaMiDinero\src\htdocs
+build_property._RazorSourceGeneratorDebug = 
+
+[D:/06_DndVaMiDinero/src/htdocs/Pages/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/06_DndVaMiDinero/src/htdocs/Pages/Disclaimer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY2xhaW1lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/06_DndVaMiDinero/src/htdocs/Pages/Faq.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFxLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/06_DndVaMiDinero/src/htdocs/Pages/Resumen.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzdW1lbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/06_DndVaMiDinero/src/htdocs/Pages/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/06_DndVaMiDinero/src/htdocs/Pages/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/06_DndVaMiDinero/src/htdocs/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

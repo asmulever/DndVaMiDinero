@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\assets\\css\\styles.css",
+      "PackagePath": "staticwebassets\\assets\\css\\styles.css"
+    },
+    {
+      "Id": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\assets\\js\\app.js",
+      "PackagePath": "staticwebassets\\assets\\js\\app.js"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.DndVaMiDinero.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.build.DndVaMiDinero.props",
+      "PackagePath": "build\\DndVaMiDinero.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.DndVaMiDinero.props",
+      "PackagePath": "buildMultiTargeting\\DndVaMiDinero.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildTransitive.DndVaMiDinero.props",
+      "PackagePath": "buildTransitive\\DndVaMiDinero.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

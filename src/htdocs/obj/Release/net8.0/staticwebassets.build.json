@@ -1,0 +1,58 @@
+{
+  "Version": 1,
+  "Hash": "XS+S2XqHsmFs781lHzJ+fpoukNGv5LdyIybENOkDYo0=",
+  "Source": "DndVaMiDinero",
+  "BasePath": "_content/DndVaMiDinero",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "DndVaMiDinero\\wwwroot",
+      "Source": "DndVaMiDinero",
+      "ContentRoot": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\",
+      "BasePath": "_content/DndVaMiDinero",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\assets\\css\\styles.css",
+      "SourceId": "DndVaMiDinero",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\",
+      "BasePath": "_content/DndVaMiDinero",
+      "RelativePath": "assets/css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\css\\styles.css"
+    },
+    {
+      "Identity": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\assets\\js\\app.js",
+      "SourceId": "DndVaMiDinero",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\",
+      "BasePath": "_content/DndVaMiDinero",
+      "RelativePath": "assets/js/app.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\js\\app.js"
+    }
+  ]
+}

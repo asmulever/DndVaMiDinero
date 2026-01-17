@@ -1,0 +1,80 @@
+@page
+@{
+    ViewData["Title"] = "Resumen mensual | Dónde Va Mi Dinero?";
+    ViewData["Description"] = "Resumen mensual y diagnostico de tus gastos.";
+}
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <circle cx="12" cy="12" r="8"></circle>
+        <path d="M12 7v5l3 2"></path>
+        <path d="M16.5 6.5l2-2.5-3.5 1"></path>
+      </svg>
+    </span>
+    <span class="brand-name">Dónde Va Mi Dinero?</span>
+  </div>
+  <nav class="site-nav">
+    <a href="/">Editar valores</a>
+  </nav>
+</header>
+
+<main>
+  <section class="card results" id="results-card">
+    <div class="results-header">
+      <h2>Resumen mensual</h2>
+      <p class="muted">Balance, ahorro estimado y reparto por categoria.</p>
+    </div>
+    <div class="metrics">
+      <div class="metric">
+        <span>Total gastos</span>
+        <strong id="total-expenses">-</strong>
+      </div>
+      <div class="metric">
+        <span>Balance</span>
+        <strong id="balance">-</strong>
+      </div>
+      <div class="metric">
+        <span>Ahorro estimado</span>
+        <strong id="savings">-</strong>
+      </div>
+    </div>
+    <div class="bars">
+      <h3>Distribucion por categoria</h3>
+      <div id="bars-list" class="bars-list"></div>
+    </div>
+  </section>
+
+  <section class="card diagnosis" id="diagnosis-card">
+    <div class="diagnosis-header">
+      <h2>Diagnostico</h2>
+      <span id="status-badge" class="badge">Sin datos</span>
+    </div>
+    <p id="diagnosis-message" class="muted">
+      Ingresa tus ingresos para ver el diagnostico.
+    </p>
+    <div class="diagnosis-grid">
+      <div>
+        <h3>Alertas</h3>
+        <ul id="alerts-list" class="list"></ul>
+      </div>
+      <div>
+        <h3>Recomendaciones</h3>
+        <ul id="recommendations-list" class="list"></ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Acciones</h2>
+    <p class="muted">Podes reiniciar o editar los valores cargados.</p>
+    <div class="actions">
+      <a class="btn secondary" href="/?reset=1">Volver a comenzar</a>
+      <a class="btn" href="/">Editar valores cargados</a>
+    </div>
+  </section>
+</main>
+
+
+
+<script src="/assets/js/app.js"></script>
