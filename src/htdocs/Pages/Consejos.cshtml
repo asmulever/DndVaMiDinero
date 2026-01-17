@@ -1,0 +1,82 @@
+@page
+@model ConsejosModel
+@{
+    ViewData["Title"] = "Consejos | Dónde de Va Mi Dinero?";
+    ViewData["Description"] = "Consejos generales para optimizar tus recursos y recibir tips semanales.";
+}
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <circle cx="12" cy="12" r="8"></circle>
+        <path d="M12 7v5l3 2"></path>
+        <path d="M16.5 6.5l2-2.5-3.5 1"></path>
+      </svg>
+    </span>
+    <span class="brand-name">Dónde Va Mi Dinero?</span>
+  </div>
+  <nav class="site-nav">
+    <a href="/">Volver</a>
+  </nav>
+</header>
+
+<main class="tips">
+  <section class="card tips-card">
+    <h1>Consejos para cuidar tu bolsillo</h1>
+    <p class="lead tips-intro">
+      Sabemos que organizar la plata no siempre es fácil. Por eso, armamos una guía simple,
+      amable y práctica para que tomes decisiones con más tranquilidad y control.
+    </p>
+    <ul class="tips-list">
+      <li>Registrá tus ingresos y gastos al menos una vez por semana.</li>
+      <li>Definí metas pequeñas y realistas para mantener la motivación.</li>
+      <li>Separá tus gastos fijos de los variables para entender dónde ajustar.</li>
+      <li>Priorizá el ahorro automático, aunque sea con montos chicos.</li>
+      <li>Revisá suscripciones y pagos recurrentes que ya no usás.</li>
+      <li>Planificá compras grandes con tiempo para evitar gastos impulsivos.</li>
+      <li>Usá una regla simple: si no es urgente, esperá 24 horas antes de comprar.</li>
+      <li>Armá un fondo de emergencia con el equivalente a 1 o 2 meses de gastos.</li>
+      <li>Compará precios y opciones antes de contratar servicios nuevos.</li>
+      <li>Celebrá los avances: cada paso cuenta para mejorar tu economía.</li>
+    </ul>
+
+    <div class="tips-invite">
+      <h2>Recibí consejos semanales</h2>
+      <p class="muted">
+        Si querés, dejanos tus datos y te enviamos un mail semanal con tips de ahorro y orden
+        financiero. Prometemos contenido útil, simple y sin spam.
+      </p>
+    </div>
+
+    <form id="tips-form" method="post" class="tips-form" novalidate>
+      @Html.AntiForgeryToken()
+      <div class="grid">
+        <div class="form-row">
+          <label for="first-name">Nombre</label>
+          <input id="first-name" asp-for="FirstName" type="text" autocomplete="given-name" />
+        </div>
+        <div class="form-row">
+          <label for="last-name">Apellido</label>
+          <input id="last-name" asp-for="LastName" type="text" autocomplete="family-name" />
+        </div>
+      </div>
+      <div class="form-row">
+        <label for="email">Direccion de email</label>
+        <input id="email" asp-for="Email" type="email" autocomplete="email" />
+      </div>
+      <div class="form-feedback" id="tips-form-feedback" aria-live="polite">
+        @if (!ViewData.ModelState.IsValid)
+        {
+            var generalErrors = ViewData.ModelState[string.Empty]?.Errors;
+            var generalError = generalErrors is { Count: > 0 }
+                ? generalErrors[0].ErrorMessage
+                : "Revisá los datos e intentá nuevamente.";
+            <span class="feedback-error">@generalError</span>
+        }
+      </div>
+      <div class="actions">
+        <button type="submit" class="btn">Afiliarme</button>
+      </div>
+    </form>
+  </section>
+</main>

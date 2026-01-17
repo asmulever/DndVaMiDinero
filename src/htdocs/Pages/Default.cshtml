@@ -27,7 +27,7 @@
   </div>
   <nav class="site-nav">
     <a href="/Faq">Ayuda Frecuente</a>
-    <a href="/Disclaimer">Disclaimer</a>
+    <a href="/Consejos">Consejos</a>
   </nav>
 </header>
 
@@ -48,67 +48,95 @@
   <section class="card" id="form-card">
     <h2>Tu mes en numeros</h2>
     <form id="budget-form" autocomplete="off">
-      <div class="form-row">
-        <label for="currency">Moneda</label>
-        <select id="currency">
-          <option value="ARS">$ ARS</option>
-          <option value="MXN">$ MXN</option>
-          <option value="COP">$ COP</option>
-          <option value="CLP">$ CLP</option>
-          <option value="PEN">S/ PEN</option>
-          <option value="UYU">$ UYU</option>
-          <option value="USD">$ USD</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label for="income">Ingresos mensuales</label>
-        <input id="income" type="text" inputmode="decimal" placeholder="0" />
-      </div>
-      <div class="toggle-row">
-        <label class="toggle">
-          <input type="checkbox" id="show-decimals" />
-          <span>Mostrar decimales</span>
-        </label>
-        <span class="hint">Por defecto 0 decimales para LATAM.</span>
-      </div>
+      <div class="accordion" id="form-accordion">
+        <details class="accordion-item" open>
+          <summary>Ingresos</summary>
+          <div class="accordion-panel">
+            <div class="currency-row">
+              <div class="form-row">
+                <label for="currency">Moneda</label>
+                <select id="currency" class="currency-select" tabindex="-1">
+                  <option value="ARS">$ ARS</option>
+                  <option value="MXN">$ MXN</option>
+                  <option value="COP">$ COP</option>
+                  <option value="CLP">$ CLP</option>
+                  <option value="PEN">S/ PEN</option>
+                  <option value="UYU">$ UYU</option>
+                  <option value="USD">$ USD</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid">
+              <div class="form-row">
+                <label for="income">Ingreso principal</label>
+                <input id="income" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="other-income">Otros ingresos</label>
+                <input id="other-income" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle">
+                <input type="checkbox" id="show-decimals" />
+                <span>Mostrar decimales</span>
+              </label>
+              <span class="hint">Por defecto 0 decimales para LATAM.</span>
+            </div>
+          </div>
+        </details>
 
-      <div class="grid">
-        <div class="form-row">
-          <label for="housing">Vivienda</label>
-          <input id="housing" type="text" inputmode="decimal" placeholder="0" />
-        </div>
-        <div class="form-row">
-          <label for="utilities">Servicios</label>
-          <input id="utilities" type="text" inputmode="decimal" placeholder="0" />
-        </div>
-        <div class="form-row">
-          <label for="food">Comida</label>
-          <input id="food" type="text" inputmode="decimal" placeholder="0" />
-        </div>
-        <div class="form-row">
-          <label for="transport">Transporte</label>
-          <input id="transport" type="text" inputmode="decimal" placeholder="0" />
-        </div>
-        <div class="form-row">
-          <label for="debt">Deudas</label>
-          <input id="debt" type="text" inputmode="decimal" placeholder="0" />
-        </div>
-        <div class="form-row">
-          <label for="health">Salud</label>
-          <input id="health" type="text" inputmode="decimal" placeholder="0" />
-        </div>
-        <div class="form-row">
-          <label for="education">Educacion</label>
-          <input id="education" type="text" inputmode="decimal" placeholder="0" />
-        </div>
-        <div class="form-row">
-          <label for="leisure">Ocio</label>
-          <input id="leisure" type="text" inputmode="decimal" placeholder="0" />
-        </div>
-        <div class="form-row">
-          <label for="other">Otros</label>
-          <input id="other" type="text" inputmode="decimal" placeholder="0" />
-        </div>
+        <details class="accordion-item">
+          <summary>Gastos fijos</summary>
+          <div class="accordion-panel">
+            <div class="grid">
+              <div class="form-row">
+                <label for="housing">Vivienda</label>
+                <input id="housing" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="utilities">Servicios</label>
+                <input id="utilities" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="debt">Deudas</label>
+                <input id="debt" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="health">Salud</label>
+                <input id="health" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="education">Educacion</label>
+                <input id="education" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>Gastos variables</summary>
+          <div class="accordion-panel">
+            <div class="grid">
+              <div class="form-row">
+                <label for="food">Comida</label>
+                <input id="food" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="transport">Transporte</label>
+                <input id="transport" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="leisure">Ocio</label>
+                <input id="leisure" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="other">Otros</label>
+                <input id="other" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+            </div>
+          </div>
+        </details>
       </div>
 
       <div class="actions">

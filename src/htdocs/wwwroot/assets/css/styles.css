@@ -222,6 +222,80 @@ select:focus {
   gap: 12px 20px;
 }
 
+.currency-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.currency-select {
+  width: fit-content;
+  min-width: 110px;
+}
+
+.accordion {
+  display: grid;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.accordion-item {
+  border: 1px solid rgba(90, 110, 70, 0.6);
+  border-radius: 16px;
+  background: rgba(40, 50, 32, 0.6);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.accordion-item summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 16px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.accordion-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-item summary::marker {
+  content: "";
+}
+
+.accordion-item summary::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid var(--text);
+  border-bottom: 2px solid var(--text);
+  transform: rotate(45deg);
+  transition: transform 120ms ease, border-color 120ms ease;
+}
+
+.accordion-item[open] summary::after {
+  transform: rotate(-135deg);
+  border-color: var(--accent);
+}
+
+.accordion-panel {
+  padding: 4px 18px 10px;
+}
+
+.accordion-item[open] summary {
+  color: var(--accent);
+}
+
+.accordion-item summary:focus-visible {
+  outline: 2px solid rgba(155, 214, 106, 0.6);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
 .toggle-row {
   display: flex;
   align-items: center;
@@ -490,6 +564,49 @@ select:focus {
   outline: 2px solid rgba(155, 214, 106, 0.6);
   outline-offset: 4px;
   border-radius: 12px;
+}
+
+.tips-card {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.tips-intro {
+  max-width: 720px;
+}
+
+.tips-list {
+  list-style: none;
+  padding: 0;
+  margin: 18px 0 24px;
+  display: grid;
+  gap: 12px;
+  color: var(--text-muted);
+}
+
+.tips-list li {
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: rgba(40, 50, 32, 0.6);
+  border: 1px solid rgba(88, 110, 70, 0.4);
+}
+
+.tips-invite {
+  margin-top: 18px;
+}
+
+.tips-form {
+  margin-top: 16px;
+}
+
+.form-feedback {
+  min-height: 20px;
+  margin-bottom: 10px;
+}
+
+.feedback-error {
+  color: var(--danger);
+  font-size: 13px;
 }
 
 .legal .card {

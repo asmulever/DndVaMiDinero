@@ -46,6 +46,7 @@ const COUNTRY_CURRENCY = {
 
 const demoValues = {
   income: 1200,
+  "other-income": 0,
   housing: 350,
   utilities: 120,
   food: 260,
@@ -72,8 +73,11 @@ const recommendationsList = document.getElementById("recommendations-list");
 const resetBtn = document.getElementById("reset-btn");
 const demoBtn = document.getElementById("demo-btn");
 const ctaButton = document.getElementById("cta-button");
+const accordion = document.getElementById("form-accordion");
+const tipsForm = document.getElementById("tips-form");
+const tipsFeedback = document.getElementById("tips-form-feedback");
 
-const inputIds = ["income", ...CATEGORY_CONFIG.map((item) => item.id)];
+const inputIds = ["income", "other-income", ...CATEGORY_CONFIG.map((item) => item.id)];
 const inputs = inputIds.map((id) => document.getElementById(id)).filter(Boolean);
 
 let currentCurrency = DEFAULT_CURRENCY;
@@ -193,7 +197,10 @@ function buildRecommendations(alerts) {
 }
 
 function buildDataFromForm() {
-  const income = incomeInput ? parseNumber(incomeInput.value) : 0;
+  const primaryIncome = incomeInput ? parseNumber(incomeInput.value) : 0;
+  const otherIncomeInput = document.getElementById("other-income");
+  const otherIncome = otherIncomeInput ? parseNumber(otherIncomeInput.value) : 0;
+  const income = primaryIncome + otherIncome;
   const categories = CATEGORY_CONFIG.map((item) => ({
     ...item,
     value: parseNumber(document.getElementById(item.id)?.value || ""),
@@ -201,6 +208,8 @@ function buildDataFromForm() {
   return {
     currency: currentCurrency,
     decimals: currentDecimals,
+    primaryIncome,
+    otherIncome,
     income,
     categories,
   };
@@ -316,8 +325,10 @@ function applyStoredDataToForm(data) {
 
   inputs.forEach((input) => {
     const value = input.id === "income"
-      ? data.income
-      : data.categories?.find((item) => item.id === input.id)?.value ?? "";
+      ? data.primaryIncome ?? (data.income - (data.otherIncome || 0))
+      : input.id === "other-income"
+        ? data.otherIncome ?? ""
+        : data.categories?.find((item) => item.id === input.id)?.value ?? "";
     if (value === "") {
       input.value = "";
       return;
@@ -334,6 +345,8 @@ function updateResults() {
   persistData({
     currency: data.currency,
     decimals: data.decimals,
+    primaryIncome: data.primaryIncome,
+    otherIncome: data.otherIncome,
     income: data.income,
     categories: data.categories,
   });
@@ -354,6 +367,31 @@ function formatAllInputs() {
     if (input.value.trim() === "") return;
     const value = parseNumber(input.value);
     input.value = formatNumber(value, getDecimals());
+  });
+}
+
+function initAccordion() {
+  if (!accordion) return;
+  const items = Array.from(accordion.querySelectorAll(".accordion-item"));
+  if (items.length === 0) return;
+
+  items.forEach((item) => {
+    item.addEventListener("toggle", () => {
+      if (!item.open) return;
+      items.forEach((other) => {
+        if (other !== item) other.open = false;
+      });
+      const summaryText = item.querySelector("summary")?.textContent?.trim();
+      const focusMap = {
+        Ingresos: "income",
+        "Gastos fijos": "housing",
+        "Gastos variables": "food",
+      };
+      const targetId = summaryText ? focusMap[summaryText] : null;
+      if (targetId) {
+        document.getElementById(targetId)?.focus();
+      }
+    });
   });
 }
 
@@ -403,6 +441,7 @@ if (params.get("reset") === "1") {
 }
 
 if (form) {
+  initAccordion();
   inputs.forEach((input) => {
     input.addEventListener("input", updateResults);
     input.addEventListener("blur", handleBlur);
@@ -427,6 +466,8 @@ if (form) {
       persistData({
         currency: currentCurrency,
         decimals: currentDecimals,
+        primaryIncome: 0,
+        otherIncome: 0,
         income: 0,
         categories: CATEGORY_CONFIG.map((item) => ({ ...item, value: 0 })),
       });
@@ -465,6 +506,8 @@ if (form) {
     renderResults({
       currency: currentCurrency,
       decimals: currentDecimals,
+      primaryIncome: stored.primaryIncome || (stored.income || 0) - (stored.otherIncome || 0),
+      otherIncome: stored.otherIncome || 0,
       income: stored.income || 0,
       categories: stored.categories || CATEGORY_CONFIG.map((item) => ({ ...item, value: 0 })),
     });
@@ -478,5 +521,41 @@ if (ctaButton) {
   ctaButton.href = CTA_URL;
   ctaButton.addEventListener("click", () => {
     trackEvent("cta_click", { url: CTA_URL });
+  });
+}
+
+if (tipsForm) {
+  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  tipsForm.addEventListener("submit", (event) => {
+    const firstName = document.getElementById("first-name");
+    const lastName = document.getElementById("last-name");
+    const email = document.getElementById("email");
+    const errors = [];
+
+    if (!firstName || firstName.value.trim() === "") {
+      errors.push("Ingresá tu nombre.");
+    }
+    if (!lastName || lastName.value.trim() === "") {
+      errors.push("Ingresá tu apellido.");
+    }
+    if (!email || email.value.trim() === "") {
+      errors.push("Ingresá tu email.");
+    } else if (!emailPattern.test(email.value.trim())) {
+      errors.push("El email no tiene un formato valido.");
+    }
+
+    if (errors.length > 0) {
+      event.preventDefault();
+      if (tipsFeedback) {
+        tipsFeedback.textContent = errors[0];
+        tipsFeedback.classList.add("feedback-error");
+      }
+      return;
+    }
+
+    if (tipsFeedback) {
+      tipsFeedback.textContent = "";
+      tipsFeedback.classList.remove("feedback-error");
+    }
   });
 }
