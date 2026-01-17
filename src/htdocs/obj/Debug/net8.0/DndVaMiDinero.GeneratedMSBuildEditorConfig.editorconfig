@@ -18,12 +18,12 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\06_DndVaMiDinero\src\htdocs
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/06_DndVaMiDinero/src/htdocs/Pages/Default.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVmYXVsdC5jc2h0bWw=
+[D:/06_DndVaMiDinero/src/htdocs/Pages/Consejos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc2Vqb3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/06_DndVaMiDinero/src/htdocs/Pages/Disclaimer.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY2xhaW1lci5jc2h0bWw=
+[D:/06_DndVaMiDinero/src/htdocs/Pages/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/06_DndVaMiDinero/src/htdocs/Pages/Faq.cshtml]

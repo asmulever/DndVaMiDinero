@@ -447,6 +447,8 @@ if (form) {
     input.addEventListener("blur", handleBlur);
   });
 
+  document.getElementById("income")?.focus();
+
   if (currencySelect) {
     currencySelect.addEventListener("change", updateResults);
     currencySelect.value = DEFAULT_CURRENCY;
