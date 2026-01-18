@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "XS+S2XqHsmFs781lHzJ+fpoukNGv5LdyIybENOkDYo0=",
+  "Hash": "l/jwB7YX+aPN+6aSMdUwFnuUYMEkOYBb03WJk00svRI=",
   "Source": "DndVaMiDinero",
   "BasePath": "_content/DndVaMiDinero",
   "Mode": "Default",
@@ -53,6 +53,44 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\js\\app.js"
+    },
+    {
+      "Identity": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\robots.txt",
+      "SourceId": "DndVaMiDinero",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\",
+      "BasePath": "_content/DndVaMiDinero",
+      "RelativePath": "robots.txt",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\robots.txt"
+    },
+    {
+      "Identity": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\sitemap.xml",
+      "SourceId": "DndVaMiDinero",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\",
+      "BasePath": "_content/DndVaMiDinero",
+      "RelativePath": "sitemap.xml",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\sitemap.xml"
     }
   ]
 }

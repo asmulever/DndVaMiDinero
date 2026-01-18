@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\assets\\js\\app.js"
     },
     {
+      "Id": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\robots.txt",
+      "PackagePath": "staticwebassets\\robots.txt"
+    },
+    {
+      "Id": "D:\\06_DndVaMiDinero\\src\\htdocs\\wwwroot\\sitemap.xml",
+      "PackagePath": "staticwebassets\\sitemap.xml"
+    },
+    {
       "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.DndVaMiDinero.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
