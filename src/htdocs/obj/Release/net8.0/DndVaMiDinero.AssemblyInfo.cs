@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DndVaMiDinero")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f66eda152c863a1a588350d56eed642574ded4d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+69aab6af8ef7f7004dc7986d0293714ea6b416fd")]
 [assembly: System.Reflection.AssemblyProductAttribute("DndVaMiDinero")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DndVaMiDinero")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
