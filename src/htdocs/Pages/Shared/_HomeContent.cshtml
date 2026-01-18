@@ -1,0 +1,161 @@
+<header class="site-header">
+  <div class="brand">
+    <span class="brand-icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <circle cx="12" cy="12" r="8"></circle>
+        <path d="M12 7v5l3 2"></path>
+        <path d="M16.5 6.5l2-2.5-3.5 1"></path>
+      </svg>
+    </span>
+    <span class="brand-name">D¢nde Va Mi Dinero?</span>
+  </div>
+  <nav class="site-nav">
+    <a href="/Faq">Ayuda Frecuente</a>
+    <a href="/Consejos">Consejos</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">Presupuesto mensual</p>
+      <p class="lead">
+        No guardamos datos personales. Todo se procesa en tu navegador.
+      </p>
+    </div>
+    <div class="hero-card">
+      <h3>Resultado rapido</h3>
+      <p>Completa ingresos y gastos.</p>
+    </div>
+  </section>
+
+  <section class="card" id="form-card">
+    <h2>Tu mes en numeros</h2>
+    <form id="budget-form" autocomplete="off">
+      <div class="accordion" id="form-accordion">
+        <details class="accordion-item" open>
+          <summary>Ingresos</summary>
+          <div class="accordion-panel">
+            <div class="income-row">
+              <div class="form-row">
+                <label for="income">Ingreso principal</label>
+                <input id="income" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="other-income">Otros ingresos</label>
+                <input id="other-income" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row currency-row">
+                <label for="currency">Moneda</label>
+                <select id="currency" class="currency-select" tabindex="-1">
+                  <option value="ARS">$ ARS</option>
+                  <option value="MXN">$ MXN</option>
+                  <option value="COP">$ COP</option>
+                  <option value="CLP">$ CLP</option>
+                  <option value="PEN">S/ PEN</option>
+                  <option value="UYU">$ UYU</option>
+                  <option value="USD">$ USD</option>
+                </select>
+              </div>
+            </div>
+            <div class="toggle-row">
+              <label class="toggle">
+                <input type="checkbox" id="show-decimals" />
+                <span>Mostrar decimales</span>
+              </label>
+              <span class="hint">Por defecto 0 decimales para LATAM.</span>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>Gastos fijos</summary>
+          <div class="accordion-panel">
+            <div class="grid">
+              <div class="form-row">
+                <label for="housing">Vivienda</label>
+                <input id="housing" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="utilities">Servicios</label>
+                <input id="utilities" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="debt">Deudas</label>
+                <input id="debt" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="health">Salud</label>
+                <input id="health" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="education">Educacion</label>
+                <input id="education" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="accordion-item">
+          <summary>Gastos variables</summary>
+          <div class="accordion-panel">
+            <div class="grid">
+              <div class="form-row">
+                <label for="food">Comida</label>
+                <input id="food" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="transport">Transporte</label>
+                <input id="transport" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="leisure">Ocio</label>
+                <input id="leisure" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+              <div class="form-row">
+                <label for="other">Otros</label>
+                <input id="other" type="text" inputmode="decimal" placeholder="0" />
+              </div>
+            </div>
+          </div>
+        </details>
+      </div>
+
+      <div class="actions">
+        <button type="button" id="reset-btn" class="btn secondary">Limpiar</button>
+        <button type="button" id="demo-btn" class="btn">Cargar ejemplo</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="card cta" id="cta-card">
+    <div>
+      <h2>Porque es importante controlar el presupuesto mensual?</h2>
+      <p class="muted">
+        Llevar un control de los gastos mensuales permite reducir deudas,
+        mejorar el ahorro y tomar mejores decisiones financieras.
+      </p>
+    </div>
+    <a class="btn" href="/Resumen">Ver resumen</a>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <span>© DndVaMiDinero</span>
+  <div class="footer-links">
+    <a href="/privacidad" data-overlay-link>Privacidad</a>
+    <span aria-hidden="true">·</span>
+    <a href="/disclaimer" data-overlay-link>Disclaimer</a>
+  </div>
+</footer>
+
+<div id="overlay" class="overlay" hidden>
+  <div class="overlay-backdrop" data-close></div>
+  <div class="overlay-panel" role="dialog" aria-modal="true" aria-labelledby="overlayTitle">
+    <button class="overlay-close" type="button" data-close aria-label="Cerrar">&times;</button>
+    <h2 id="overlayTitle" class="overlay-title"></h2>
+    <div id="overlayBody" class="overlay-body"></div>
+  </div>
+</div>
+
+<script src="/assets/js/app.js"></script>

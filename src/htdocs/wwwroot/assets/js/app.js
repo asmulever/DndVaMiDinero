@@ -362,6 +362,14 @@ function handleBlur(event) {
   event.target.value = formatNumber(value, getDecimals());
 }
 
+function handleFocus(event) {
+  if (event.target.value.trim() === "") return;
+  const value = parseNumber(event.target.value);
+  if (value === 0) {
+    event.target.value = "";
+  }
+}
+
 function formatAllInputs() {
   inputs.forEach((input) => {
     if (input.value.trim() === "") return;
@@ -445,6 +453,7 @@ if (form) {
   inputs.forEach((input) => {
     input.addEventListener("input", updateResults);
     input.addEventListener("blur", handleBlur);
+    input.addEventListener("focus", handleFocus);
   });
 
   document.getElementById("income")?.focus();
@@ -485,21 +494,21 @@ if (form) {
     });
   }
 
-  const stored = readStoredData();
-  if (stored) {
-    applyStoredDataToForm(stored);
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    void error;
   }
+  resetForm();
   updateResults();
 
-  if (!stored) {
-    detectCurrencyByIP().then((currency) => {
-      currentCurrency = currency;
-      if (currencySelect) {
-        currencySelect.value = currency;
-      }
-      updateResults();
-    });
-  }
+  detectCurrencyByIP().then((currency) => {
+    currentCurrency = currency;
+    if (currencySelect) {
+      currencySelect.value = currency;
+    }
+    updateResults();
+  });
 } else {
   const stored = readStoredData();
   if (stored) {
@@ -558,6 +567,95 @@ if (tipsForm) {
     if (tipsFeedback) {
       tipsFeedback.textContent = "";
       tipsFeedback.classList.remove("feedback-error");
+    }
+  });
+}
+
+const overlay = document.getElementById("overlay");
+const overlayBody = document.getElementById("overlayBody");
+const overlayTitle = document.getElementById("overlayTitle");
+let overlayReturnFocus = null;
+
+function closeOverlay(pushState) {
+  if (!overlay || !overlayBody) return;
+  overlay.hidden = true;
+  overlayBody.innerHTML = "";
+  if (overlayTitle) overlayTitle.textContent = "";
+  document.body.classList.remove("overlay-open");
+  if (pushState) {
+    history.pushState({}, "", "/");
+  }
+  if (overlayReturnFocus) {
+    overlayReturnFocus.focus();
+    overlayReturnFocus = null;
+  }
+}
+
+async function openOverlay(url, pushState) {
+  if (!overlay || !overlayBody) {
+    window.location.href = url;
+    return;
+  }
+
+  try {
+    const response = await fetch(url, { headers: { "X-Requested-With": "overlay" } });
+    if (!response.ok) throw new Error("overlay fetch failed");
+    const html = await response.text();
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const content = doc.querySelector("[data-overlay-content]");
+    if (!content) throw new Error("overlay content not found");
+
+    const heading = content.querySelector("h1, h2, h3");
+    if (overlayTitle) {
+      overlayTitle.textContent = heading ? heading.textContent.trim() : "";
+    }
+    if (heading) {
+      heading.remove();
+    }
+
+    overlayBody.innerHTML = content.innerHTML;
+    overlay.hidden = false;
+    document.body.classList.add("overlay-open");
+    if (pushState) {
+      history.pushState({ overlay: true }, "", url);
+    }
+    overlay.querySelector(".overlay-close")?.focus();
+  } catch (error) {
+    window.location.href = url;
+  }
+}
+
+if (overlay) {
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("[data-overlay-link]");
+    if (link) {
+      const href = link.getAttribute("href");
+      if (!href) return;
+      event.preventDefault();
+      overlayReturnFocus = link;
+      void openOverlay(href, true);
+      return;
+    }
+    if (event.target.closest("[data-close]")) {
+      event.preventDefault();
+      closeOverlay(true);
+    }
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !overlay.hidden) {
+      closeOverlay(true);
+    }
+  });
+
+  window.addEventListener("popstate", () => {
+    const path = window.location.pathname.toLowerCase();
+    if (path === "/") {
+      closeOverlay(false);
+      return;
+    }
+    if (path === "/privacidad" || path === "/disclaimer") {
+      void openOverlay(path, false);
     }
   });
 }
