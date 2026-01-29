@@ -19,7 +19,7 @@ const CATEGORY_CONFIG = [
   { id: "transport", label: "Transporte" },
   { id: "debt", label: "Deudas", threshold: TH_DEBT, alert: "Deuda alta" },
   { id: "health", label: "Salud" },
-  { id: "education", label: "Educacion" },
+  { id: "education", label: "Educación" },
   { id: "leisure", label: "Ocio" },
   { id: "other", label: "Otros" },
 ];
@@ -167,7 +167,7 @@ function setBadge(status) {
   statusBadge.className = "badge";
   if (status === "Sano") statusBadge.classList.add("sano");
   if (status === "Ajustado") statusBadge.classList.add("ajustado");
-  if (status === "Critico") statusBadge.classList.add("critico");
+  if (status === "Crítico") statusBadge.classList.add("critico");
   statusBadge.textContent = status;
 }
 
@@ -175,22 +175,22 @@ function buildRecommendations(alerts) {
   const suggestions = [];
   alerts.forEach((alert) => {
     if (alert.includes("Vivienda")) {
-      suggestions.push("Negocia condiciones o revisa gastos fijos de vivienda.");
+      suggestions.push("Negociá condiciones o revisá gastos fijos de vivienda.");
     }
     if (alert.includes("Deuda")) {
-      suggestions.push("Prioriza un plan de pagos y evita nuevas cuotas.");
+      suggestions.push("Priorizá un plan de pagos y evitá nuevas cuotas.");
     }
     if (alert.includes("Comida")) {
-      suggestions.push("Define un tope semanal para comidas y supermercados.");
+      suggestions.push("Definí un tope semanal para comidas y supermercados.");
     }
     if (alert.includes("Servicios")) {
-      suggestions.push("Revisa servicios recurrentes y planes activos.");
+      suggestions.push("Revisá servicios recurrentes y planes activos.");
     }
   });
 
   if (suggestions.length === 0) {
-    suggestions.push("Mantene el control y revisa tus categorias cada mes.");
-    suggestions.push("Reserva un margen para imprevistos sin compromisos.");
+    suggestions.push("Mantené el control y revisá tus categorías cada mes.");
+    suggestions.push("Reservá un margen para imprevistos sin comprometerte.");
   }
 
   return suggestions.slice(0, 4);
@@ -250,17 +250,17 @@ function renderResults(data) {
     diagnosisMessage.textContent =
       "Ingresos 0: no se puede diagnosticar.";
     const li = document.createElement("li");
-    li.textContent = "Agrega ingresos para calcular porcentajes.";
+    li.textContent = "Agregá ingresos para calcular porcentajes.";
     alertsList.appendChild(li);
     const rec = document.createElement("li");
-    rec.textContent = "Completa ingresos para ver recomendaciones.";
+    rec.textContent = "Completá ingresos para ver recomendaciones.";
     recommendationsList.appendChild(rec);
     return;
   }
 
   const ratio = income > 0 ? balance / income : 0;
   let status = "Sano";
-  if (balance < 0) status = "Critico";
+  if (balance < 0) status = "Crítico";
   if (ratio >= 0 && ratio < 0.1) status = "Ajustado";
   setBadge(status);
 
@@ -362,6 +362,14 @@ function handleBlur(event) {
   event.target.value = formatNumber(value, getDecimals());
 }
 
+function handleFocus(event) {
+  if (event.target.value.trim() === "") return;
+  const value = parseNumber(event.target.value);
+  if (value === 0) {
+    event.target.value = "";
+  }
+}
+
 function formatAllInputs() {
   inputs.forEach((input) => {
     if (input.value.trim() === "") return;
@@ -445,6 +453,7 @@ if (form) {
   inputs.forEach((input) => {
     input.addEventListener("input", updateResults);
     input.addEventListener("blur", handleBlur);
+    input.addEventListener("focus", handleFocus);
   });
 
   document.getElementById("income")?.focus();
@@ -485,21 +494,21 @@ if (form) {
     });
   }
 
-  const stored = readStoredData();
-  if (stored) {
-    applyStoredDataToForm(stored);
+  try {
+    localStorage.removeItem(STORAGE_KEY);
+  } catch (error) {
+    void error;
   }
+  resetForm();
   updateResults();
 
-  if (!stored) {
-    detectCurrencyByIP().then((currency) => {
-      currentCurrency = currency;
-      if (currencySelect) {
-        currencySelect.value = currency;
-      }
-      updateResults();
-    });
-  }
+  detectCurrencyByIP().then((currency) => {
+    currentCurrency = currency;
+    if (currencySelect) {
+      currencySelect.value = currency;
+    }
+    updateResults();
+  });
 } else {
   const stored = readStoredData();
   if (stored) {
@@ -514,7 +523,7 @@ if (form) {
       categories: stored.categories || CATEGORY_CONFIG.map((item) => ({ ...item, value: 0 })),
     });
   } else {
-    setEmptyState("Carga valores en la pagina principal para ver el resumen.");
+    setEmptyState("Cargá valores en la página principal para ver el resumen.");
   }
 }
 
@@ -543,7 +552,7 @@ if (tipsForm) {
     if (!email || email.value.trim() === "") {
       errors.push("Ingresá tu email.");
     } else if (!emailPattern.test(email.value.trim())) {
-      errors.push("El email no tiene un formato valido.");
+      errors.push("El email no tiene un formato válido.");
     }
 
     if (errors.length > 0) {
@@ -558,6 +567,95 @@ if (tipsForm) {
     if (tipsFeedback) {
       tipsFeedback.textContent = "";
       tipsFeedback.classList.remove("feedback-error");
+    }
+  });
+}
+
+const overlay = document.getElementById("overlay");
+const overlayBody = document.getElementById("overlayBody");
+const overlayTitle = document.getElementById("overlayTitle");
+let overlayReturnFocus = null;
+
+function closeOverlay(pushState) {
+  if (!overlay || !overlayBody) return;
+  overlay.hidden = true;
+  overlayBody.innerHTML = "";
+  if (overlayTitle) overlayTitle.textContent = "";
+  document.body.classList.remove("overlay-open");
+  if (pushState) {
+    history.pushState({}, "", "/");
+  }
+  if (overlayReturnFocus) {
+    overlayReturnFocus.focus();
+    overlayReturnFocus = null;
+  }
+}
+
+async function openOverlay(url, pushState) {
+  if (!overlay || !overlayBody) {
+    window.location.href = url;
+    return;
+  }
+
+  try {
+    const response = await fetch(url, { headers: { "X-Requested-With": "overlay" } });
+    if (!response.ok) throw new Error("overlay fetch failed");
+    const html = await response.text();
+    const doc = new DOMParser().parseFromString(html, "text/html");
+    const content = doc.querySelector("[data-overlay-content]");
+    if (!content) throw new Error("overlay content not found");
+
+    const heading = content.querySelector("h1, h2, h3");
+    if (overlayTitle) {
+      overlayTitle.textContent = heading ? heading.textContent.trim() : "";
+    }
+    if (heading) {
+      heading.remove();
+    }
+
+    overlayBody.innerHTML = content.innerHTML;
+    overlay.hidden = false;
+    document.body.classList.add("overlay-open");
+    if (pushState) {
+      history.pushState({ overlay: true }, "", url);
+    }
+    overlay.querySelector(".overlay-close")?.focus();
+  } catch (error) {
+    window.location.href = url;
+  }
+}
+
+if (overlay) {
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest("[data-overlay-link]");
+    if (link) {
+      const href = link.getAttribute("href");
+      if (!href) return;
+      event.preventDefault();
+      overlayReturnFocus = link;
+      void openOverlay(href, true);
+      return;
+    }
+    if (event.target.closest("[data-close]")) {
+      event.preventDefault();
+      closeOverlay(true);
+    }
+  });
+
+  window.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && !overlay.hidden) {
+      closeOverlay(true);
+    }
+  });
+
+  window.addEventListener("popstate", () => {
+    const path = window.location.pathname.toLowerCase();
+    if (path === "/") {
+      closeOverlay(false);
+      return;
+    }
+    if (path === "/privacidad" || path === "/disclaimer") {
+      void openOverlay(path, false);
     }
   });
 }

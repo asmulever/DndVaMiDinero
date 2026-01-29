@@ -1,7 +1,7 @@
 @page
 @{
     ViewData["Title"] = "Resumen mensual | Dónde Va Mi Dinero?";
-    ViewData["Description"] = "Resumen mensual y diagnostico de tus gastos.";
+    ViewData["Description"] = "Resumen mensual y diagnóstico de tus gastos.";
 }
 <header class="site-header">
   <div class="brand">
@@ -23,7 +23,7 @@
   <section class="card results" id="results-card">
     <div class="results-header">
       <h2>Resumen mensual</h2>
-      <p class="muted">Balance, ahorro estimado y reparto por categoria.</p>
+      <p class="muted">Balance, ahorro estimado y reparto por categoría.</p>
     </div>
     <div class="metrics">
       <div class="metric">
@@ -40,18 +40,18 @@
       </div>
     </div>
     <div class="bars">
-      <h3>Distribucion por categoria</h3>
+      <h3>Distribución por categoría</h3>
       <div id="bars-list" class="bars-list"></div>
     </div>
   </section>
 
   <section class="card diagnosis" id="diagnosis-card">
     <div class="diagnosis-header">
-      <h2>Diagnostico</h2>
+      <h2>Diagnóstico</h2>
       <span id="status-badge" class="badge">Sin datos</span>
     </div>
     <p id="diagnosis-message" class="muted">
-      Ingresa tus ingresos para ver el diagnostico.
+      Ingresá tus ingresos para ver el diagnóstico.
     </p>
     <div class="diagnosis-grid">
       <div>
@@ -67,7 +67,7 @@
 
   <section class="card">
     <h2>Acciones</h2>
-    <p class="muted">Podes reiniciar o editar los valores cargados.</p>
+    <p class="muted">Podés reiniciar o editar los valores cargados.</p>
     <div class="actions">
       <a class="btn secondary" href="/?reset=1">Volver a comenzar</a>
       <a class="btn" href="/">Editar valores cargados</a>

@@ -26,12 +26,24 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGVmYXVsdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/06_DndVaMiDinero/src/htdocs/Pages/Disclaimer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlzY2xhaW1lci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/06_DndVaMiDinero/src/htdocs/Pages/Faq.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmFxLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/06_DndVaMiDinero/src/htdocs/Pages/Privacidad.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjaWRhZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/06_DndVaMiDinero/src/htdocs/Pages/Resumen.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVzdW1lbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/06_DndVaMiDinero/src/htdocs/Pages/Shared/_HomeContent.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9Ib21lQ29udGVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/06_DndVaMiDinero/src/htdocs/Pages/Shared/_Layout.cshtml]

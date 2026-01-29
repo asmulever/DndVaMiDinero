@@ -46,7 +46,7 @@ public class ConsejosModel : PageModel
         }
         else if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
         {
-            ModelState.AddModelError(nameof(Email), "Email invalido.");
+            ModelState.AddModelError(nameof(Email), "Email inválido.");
         }
 
         if (!ModelState.IsValid)
@@ -57,7 +57,7 @@ public class ConsejosModel : PageModel
         var connectionString = _configuration.GetConnectionString("DefaultConnection");
         if (string.IsNullOrWhiteSpace(connectionString))
         {
-            ModelState.AddModelError(string.Empty, "Configuracion de base de datos no disponible.");
+            ModelState.AddModelError(string.Empty, "Configuración de base de datos no disponible.");
             return Page();
         }
 
