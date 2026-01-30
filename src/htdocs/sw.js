@@ -1,4 +1,5 @@
-const CACHE_NAME = "dndvamidinero-static-v1";
+// Increment the cache name to force clients to fetch the latest assets when they change.
+const CACHE_NAME = "dndvamidinero-static-v2";
 const ASSETS = [
   "/",
   "/assets/css/styles.css",

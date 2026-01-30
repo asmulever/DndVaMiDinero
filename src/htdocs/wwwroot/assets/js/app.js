@@ -539,7 +539,9 @@ const DUAL_OPEN_URL = "https://otieu.com/4/10540628";
 const DUAL_OPEN_SELECTOR = [
   'a[href="/privacidad"]',
   'a[href="/disclaimer"]',
+  'a[href="/faq"]',
   'a[href="/Faq"]',
+  'a[href="/consejos"]',
   'a[href="/Consejos"]'
 ].join(", ");
 
