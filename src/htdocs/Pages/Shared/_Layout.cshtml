@@ -5,16 +5,19 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    @* <script>(function(s)
+    <script>(function(s)
       {s.dataset.zone='10481207',s.src='https://nap5k.com/tag.min.js'})
       ([document.documentElement, 
       document.body].filter(Boolean).pop().appendChild(document.createElement('script')))
-    </script> *@
+    </script>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>@title</title>
     <meta name="description" content="@description" />
+    <meta name="robots" content="index,follow" />
     <link rel="canonical" href="http://dndvamidinero.somee.com/" />  
+    <link rel="alternate" hreflang="es-419" href="http://dndvamidinero.somee.com/" />
+    <link rel="alternate" hreflang="es" href="http://dndvamidinero.somee.com/" />
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
@@ -29,6 +32,36 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="/assets/css/styles.css" />
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""WebSite"",
+      ""name"": ""DndVaMiDinero"",
+      ""url"": ""http://dndvamidinero.somee.com/"",
+      ""inLanguage"": ""es"",
+      ""potentialAction"": {
+        ""@type"": ""SearchAction"",
+        ""target"": ""http://dndvamidinero.somee.com/?q={search_term_string}"",
+        ""query-input"": ""required name=search_term_string""
+      }
+    }")
+    </script>
+    <script type="application/ld+json">
+    @Html.Raw(@"{
+      ""@context"": ""https://schema.org"",
+      ""@type"": ""WebApplication"",
+      ""name"": ""DndVaMiDinero"",
+      ""applicationCategory"": ""FinanceApplication"",
+      ""operatingSystem"": ""Web"",
+      ""url"": ""http://dndvamidinero.somee.com/"",
+      ""inLanguage"": ""es"",
+      ""featureList"": [
+        ""Calculadora de presupuesto mensual"",
+        ""Diagnóstico de gastos"",
+        ""Consejos de ahorro""
+      ]
+    }")
+    </script>
     @RenderSection("Head", required: false)
   </head>
   <body>
@@ -38,8 +71,8 @@
     <footer style="margin-top:40px;text-align:center">
       <div style="font-size:12px;color:#666">
         Acceso correcto:
-        <a href="http://dndvamidinero.somee.com">
-          http://dndvamidinero.somee.com
+        <a href="https://dndvamidinero.somee.com">
+          https://dndvamidinero.somee.com
         </a>
       </div>
     </footer>

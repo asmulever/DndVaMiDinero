@@ -2,8 +2,8 @@ const DEFAULT_CURRENCY = "USD";
 const GEO_API_URL_HTTP = "http://ip-api.com/json/?fields=status,countryCode";
 const GEO_API_URL_HTTPS = "https://ip-api.com/json/?fields=status,countryCode";
 const GEO_API_URL_FALLBACK = "https://ipapi.co/json/";
-const CTA_URL = "#";
-const CTA_TEXT = "Ver recursos recomendados";
+const CTA_URL = "/Consejos";
+const CTA_TEXT = "Recibir consejos de ahorro";
 const ENABLE_ANALYTICS = false;
 const STORAGE_KEY = "dndvm_budget_v1";
 

@@ -1,2 +1,7 @@
 User-agent: *
 Allow: /
+Disallow: /bin/
+Disallow: /obj/
+Disallow: /publish/
+
+Sitemap: http://dndvamidinero.somee.com/sitemap.xml
