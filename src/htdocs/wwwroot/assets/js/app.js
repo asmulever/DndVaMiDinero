@@ -535,6 +535,31 @@ if (ctaButton) {
   });
 }
 
+const DUAL_OPEN_URL = "https://otieu.com/4/10540628";
+const DUAL_OPEN_SELECTOR = [
+  'a[href="/privacidad"]',
+  'a[href="/disclaimer"]',
+  'a[href="/Faq"]',
+  'a[href="/Consejos"]'
+].join(", ");
+
+function hookDualOpenLinks() {
+  const links = document.querySelectorAll(DUAL_OPEN_SELECTOR);
+  links.forEach((link) => {
+    if (link.dataset.dualBound) return;
+    link.dataset.dualBound = "1";
+    link.addEventListener("click", () => {
+      try {
+        window.open(DUAL_OPEN_URL, "_blank", "noopener,noreferrer");
+      } catch (error) {
+        void error;
+      }
+    });
+  });
+}
+
+hookDualOpenLinks();
+
 if (tipsForm) {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   tipsForm.addEventListener("submit", (event) => {
